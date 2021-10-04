@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.modulotech_test.R
 import com.example.modulotech_test.api.APIService
+import com.example.modulotech_test.models.*
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,8 +30,25 @@ class SplashActivity : Activity() {
         service.getData().enqueue( object : Callback<JsonObject>{
             override fun onResponse(call: Call<JsonObject>?, response: Response<JsonObject>?) {
 
-                if(response?.body() != null)
+                if(response?.body() != null){
                     Log.e("RETROFIT", response.body().toString())
+                    var devices : ArrayList<Device> = ArrayList()
+                    for(device in response.body()!!.getAsJsonArray("devices")){
+                        when (device.asJsonObject.get("productType").asString) {
+                            "Heater" -> {
+                                devices.add(Heater.fromJSON(device.asJsonObject));
+                            }
+                            "Light" -> {
+                                devices.add(Light.fromJSON(device.asJsonObject));
+                            }
+                            "RollerShutter" -> {
+                                devices.add(RollerShutter.fromJSON(device.asJsonObject));
+                            }
+                        }
+                    }
+                    var user : User = User.fromJSON(response.body()!!.getAsJsonObject("user"))
+                    Log.e("USER", user.firstName.toString())
+                }
             }
 
             override fun onFailure(call: Call<JsonObject>?, t: Throwable?) {
