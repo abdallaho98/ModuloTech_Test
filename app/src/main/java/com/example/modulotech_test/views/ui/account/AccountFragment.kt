@@ -1,4 +1,4 @@
-package com.example.modulotech_test.views.ui.notifications
+package com.example.modulotech_test.views.ui.account
 
 import android.os.Bundle
 import android.view.LayoutInflater

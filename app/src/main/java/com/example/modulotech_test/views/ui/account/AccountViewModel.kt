@@ -1,4 +1,4 @@
-package com.example.modulotech_test.views.ui.notifications
+package com.example.modulotech_test.views.ui.account
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
