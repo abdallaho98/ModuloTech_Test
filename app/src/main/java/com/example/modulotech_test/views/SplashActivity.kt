@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import com.example.modulotech_test.R
 import com.example.modulotech_test.api.APIService
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
