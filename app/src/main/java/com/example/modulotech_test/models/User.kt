@@ -1,20 +1,23 @@
 package com.example.modulotech_test.models
 
 import com.google.gson.JsonObject
+import org.json.JSONObject
+import java.io.Serializable
 
 class User(
         val firstName: String,
         val lastName: String,
         val address: Address,
         val birthDate: Long
-){
+): Serializable{
         companion object {
-                fun fromJSON(json: JsonObject): User {
+                fun fromJSON(string: String): User {
+                        val json = JSONObject(string)
                         return User(
-                                json.get("firstName").asString,
-                                json.get("lastName").asString,
-                                Address.fromJSON(json.getAsJsonObject("address")),
-                                json.get("birthDate").asLong
+                                json.getString("firstName"),
+                                json.getString("lastName"),
+                                Address.fromJSON(json.getJSONObject("address").toString()),
+                                json.getLong("birthDate")
                         )
                 }
         }

@@ -1,6 +1,8 @@
 package com.example.modulotech_test.models
 
 import com.google.gson.JsonObject
+import org.json.JSONObject
+import java.io.Serializable
 
 class Address (
         val city: String,
@@ -8,15 +10,16 @@ class Address (
         val street: String,
         val streetCode: String,
         val country: String
-){
+): Serializable {
         companion object {
-                fun fromJSON(json: JsonObject): Address {
+                fun fromJSON(string: String): Address {
+                        val json = JSONObject(string)
                         return Address(
-                                json.get("city").asString,
-                                json.get("postalCode").asInt,
-                                json.get("street").asString,
-                                json.get("streetCode").asString,
-                                json.get("country").asString
+                                json.getString("city"),
+                                json.getInt("postalCode"),
+                                json.getString("street"),
+                                json.getString("streetCode"),
+                                json.getString("country")
                         )
                 }
         }
