@@ -37,10 +37,10 @@ class HomeFragment : Fragment() {
             homeViewModel.load(prefsHelp.getDevices())
         };
         activity?.let {
-            homeViewModel.lst.observe(it, Observer{ it ->
-                Log.i("data",it.toString())
+            homeViewModel.lst.observe(it, Observer{ it11 ->
+                Log.i("data",it11.toString())
                 mainrecycler.adapter=
-                    context?.let { it1 -> DevicesRecyclerAdapter(homeViewModel, it, it1) }
+                    context?.let { it1 -> DevicesRecyclerAdapter(homeViewModel, it11, it1) }
             })
         }
         return root

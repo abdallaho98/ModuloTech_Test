@@ -3,11 +3,11 @@ package com.example.modulotech_test.views.ui.account
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.modulotech_test.models.Device
+import com.example.modulotech_test.models.User
 
 class AccountViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is account Fragment"
-    }
-    val text: LiveData<String> = _text
+    var user = MutableLiveData<User>()
+
 }

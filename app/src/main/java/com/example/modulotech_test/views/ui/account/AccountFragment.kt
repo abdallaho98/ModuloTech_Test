@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.modulotech_test.R
+import com.example.modulotech_test.databinding.FragmentAccountBinding
+import com.example.modulotech_test.helpers.AppPreferencesHelper
 
 class AccountFragment : Fragment() {
 
@@ -21,11 +22,15 @@ class AccountFragment : Fragment() {
     ): View? {
         accountViewModel =
                 ViewModelProvider(this).get(AccountViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_account, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        accountViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+
+        val prefsHelp = context?.applicationContext?.let { it1 -> AppPreferencesHelper(it1, "data") }
+        if (prefsHelp?.getUser() != null) {
+            accountViewModel.user.value = prefsHelp.getUser()!!
+        }
+
+        val root : FragmentAccountBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_account, container, false)
+        root.viewmodel = accountViewModel
+        root.lifecycleOwner = this
+        return root.root
     }
 }
