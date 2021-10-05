@@ -15,12 +15,12 @@ class User(
                 fun fromJSON(string: String): User {
                         val json = JSONObject(string)
                         var birthDate = ""
-                        if(json.get("birthDate") is Long){
+                        birthDate = if(json.get("birthDate") is Long){
                                 val sdf = SimpleDateFormat("dd/MM/yyyy")
                                 val netDate = Date(json.getLong("birthDate"))
-                                birthDate = sdf.format(netDate)
+                                sdf.format(netDate)
                         } else {
-                                birthDate = json.getString("birthDate")
+                                json.getString("birthDate")
                         }
                         return User(
                                 json.getString("firstName"),

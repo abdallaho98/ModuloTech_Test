@@ -10,4 +10,8 @@ class AccountViewModel : ViewModel() {
 
     var user = MutableLiveData<User>()
 
+    fun setUser(user : User){
+        this.user.value = user
+    }
+
 }
