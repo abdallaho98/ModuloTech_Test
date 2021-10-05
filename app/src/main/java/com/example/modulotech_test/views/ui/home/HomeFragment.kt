@@ -1,6 +1,7 @@
 package com.example.modulotech_test.views.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.modulotech_test.R
+import com.example.modulotech_test.adapters.DevicesRecyclerAdapter
+import com.example.modulotech_test.helpers.AppPreferencesHelper
 
 class HomeFragment : Fragment() {
 
@@ -22,10 +28,21 @@ class HomeFragment : Fragment() {
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+        var viewManager = LinearLayoutManager(activity)
+        var mainrecycler = root.findViewById(R.id.devices_list) as RecyclerView
+        mainrecycler.layoutManager = viewManager
+        val prefsHelp = context?.applicationContext?.let { it1 -> AppPreferencesHelper(it1, "data") }
+        if (prefsHelp != null) {
+            homeViewModel.load(prefsHelp.getDevices())
+        };
+        activity?.let {
+            homeViewModel.lst.observe(it, Observer{ it ->
+                Log.i("data",it.toString())
+                mainrecycler.adapter=
+                    context?.let { it1 -> DevicesRecyclerAdapter(homeViewModel, it, it1) }
+            })
+        }
         return root
     }
 }

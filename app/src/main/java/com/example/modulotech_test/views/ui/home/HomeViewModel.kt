@@ -1,13 +1,22 @@
 package com.example.modulotech_test.views.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.modulotech_test.models.Device
 
 class HomeViewModel : ViewModel() {
+    var lst = MutableLiveData<ArrayList<Device>>()
+    var newlist = arrayListOf<Device>()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    fun load(devices: ArrayList<Device>){
+        newlist.clear()
+        newlist.addAll(devices)
+        lst.value=newlist
     }
-    val text: LiveData<String> = _text
+
+    fun remove(device: Device){
+        newlist.remove(device)
+        lst.value=newlist
+    }
+
 }

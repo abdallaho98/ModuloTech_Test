@@ -1,6 +1,5 @@
 package com.example.modulotech_test.models
 
-import com.google.gson.JsonObject
 import org.json.JSONObject
 import java.io.Serializable
 
