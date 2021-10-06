@@ -1,6 +1,7 @@
 package com.example.modulotech_test.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modulotech_test.R
 import com.example.modulotech_test.models.Device
+import com.example.modulotech_test.models.Heater
+import com.example.modulotech_test.models.Light
+import com.example.modulotech_test.models.RollerShutter
+import com.example.modulotech_test.views.MainActivity
+import com.example.modulotech_test.views.heater.HeaterActivity
+import com.example.modulotech_test.views.light.LightActivity
+import com.example.modulotech_test.views.rollershutter.RollerShutterActivity
 import com.example.modulotech_test.views.ui.home.HomeViewModel
 
 class DevicesRecyclerAdapter(
@@ -44,6 +52,23 @@ class DevicesRecyclerAdapter(
             binding.findViewById<ImageButton>(R.id.delete).setOnClickListener {
                 viewModel.remove(device)
                 notifyItemRemoved(arrayList.indexOf(device))
+            }
+            binding.setOnClickListener {
+                var intent : Intent? = null
+                when (device) {
+                    is Heater -> {
+                        intent = Intent(context, HeaterActivity::class.java)
+                    }
+                    is Light -> {
+                        intent = Intent(context, LightActivity::class.java)
+                    }
+                    is RollerShutter -> {
+                        intent = Intent(context, RollerShutterActivity::class.java)
+                    }
+                }
+                intent?.putExtra("device",device.id)
+                context.startActivity(intent)
+
             }
         }
 
