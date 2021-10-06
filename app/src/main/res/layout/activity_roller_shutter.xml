@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.rollershutter.RollerShutterActivity">
-
-    <com.google.android.material.slider.RangeSlider
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.modulotech_test.views.rollershutter.RollerShutterViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/position"
-        android:valueFrom="0"
-        android:rotation="270"
-        android:valueTo="100"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        />
+        android:layout_height="match_parent"
+        tools:context=".views.rollershutter.RollerShutterActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.slider.Slider
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/position"
+            android:value="@{viewmodel.rollerShutter.position}"
+            android:valueFrom="0"
+            android:rotation="270"
+            android:valueTo="100"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
