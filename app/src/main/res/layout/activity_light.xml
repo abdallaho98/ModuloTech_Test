@@ -39,6 +39,7 @@
                 android:id="@+id/intensity"
                 android:value="@{viewmodel.light.intensity}"
                 android:valueFrom="0"
+                android:stepSize="1"
                 android:valueTo="100"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
