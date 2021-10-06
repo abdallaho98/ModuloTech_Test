@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
             }
         if (prefsHelp != null) {
             homeViewModel.load(prefsHelp.getDevices())
-        };
+        }
         activity?.let {
             homeViewModel.lst.observe(it, Observer { it11 ->
                 Log.i("data", it11.toString())
