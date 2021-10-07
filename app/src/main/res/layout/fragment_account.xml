@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     style="@style/EditTextTheme"
                     android:id="@+id/first_name"
-                    android:text="@{viewmodel.user.firstName}"
+                    android:text="@={viewmodel.firstNameText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     style="@style/EditTextTheme"
                     android:id="@+id/last_name"
-                    android:text="@{viewmodel.user.lastName}"
+                    android:text="@={viewmodel.lastNameText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -82,7 +82,7 @@
                     style="@style/EditTextTheme"
                     android:id="@+id/birth_date"
                     android:inputType="date"
-                    android:text="@{viewmodel.user.birthDate}"
+                    android:text="@={viewmodel.birthDateText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     style="@style/EditTextTheme"
                     android:id="@+id/city"
-                    android:text="@{viewmodel.user.address.city}"
+                    android:text="@={viewmodel.cityText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -130,7 +130,7 @@
                     style="@style/EditTextTheme"
                     android:id="@+id/postal_code"
                     android:inputType="number"
-                    android:text="@{Integer.toString(viewmodel.user.address.postalCode)}"
+                    android:text="@={`` + viewmodel.postalCodeText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     style="@style/EditTextTheme"
                     android:id="@+id/street"
-                    android:text="@{viewmodel.user.address.street}"
+                    android:text="@={viewmodel.streetText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     style="@style/EditTextTheme"
                     android:id="@+id/street_code"
-                    android:text="@{viewmodel.user.address.streetCode}"
+                    android:text="@={viewmodel.streetCodeText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -187,7 +187,7 @@
                     android:layout_height="wrap_content"
                     style="@style/EditTextTheme"
                     android:id="@+id/country"
-                    android:text="@{viewmodel.user.address.country}"
+                    android:text="@={viewmodel.countryText}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>

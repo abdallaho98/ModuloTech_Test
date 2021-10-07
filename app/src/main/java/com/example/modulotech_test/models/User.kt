@@ -6,11 +6,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class User(
-        val firstName: String,
-        val lastName: String,
-        val address: Address,
-        val birthDate: String
+        var firstName: String,
+        var lastName: String,
+        var address: Address,
+        var birthDate: String
 ): Serializable{
+
+
         companion object {
                 fun fromJSON(string: String): User {
                         val json = JSONObject(string)
@@ -29,5 +31,24 @@ class User(
                                 birthDate
                         )
                 }
+        }
+
+        override fun equals(other: Any?): Boolean {
+                if (other is User) {
+                        if (this.firstName != other.firstName) return false
+                        if (this.lastName != other.lastName) return false
+                        if (this.address != other.address) return false
+                        if (this.birthDate != other.birthDate) return false
+                        return true
+                }
+                return false
+        }
+
+        override fun hashCode(): Int {
+                return (firstName + lastName).hashCode()
+        }
+
+        override fun toString(): String {
+                return "User(firstName='$firstName', lastName='$lastName', address=$address, birthDate='$birthDate')"
         }
 }

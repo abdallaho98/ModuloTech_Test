@@ -19,7 +19,7 @@
             android:layout_height="60dp"
             android:id="@+id/position"
             android:stepSize="1"
-            android:value="@{viewmodel.rollerShutter.position}"
+            android:value="@{viewmodel.positionL}"
             android:valueFrom="0"
             android:rotation="270"
             android:valueTo="100"
