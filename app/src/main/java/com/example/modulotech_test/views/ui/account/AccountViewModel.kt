@@ -1,11 +1,9 @@
 package com.example.modulotech_test.views.ui.account
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.modulotech_test.models.Device
+import com.example.modulotech_test.models.Address
 import com.example.modulotech_test.models.User
-import okhttp3.internal.notify
 
 class AccountViewModel : ViewModel() {
 
@@ -25,7 +23,6 @@ class AccountViewModel : ViewModel() {
 
     fun setFirstNameText(firstName: String){
         if(this.firstName.value != firstName){
-            this.user.value?.firstName = firstName
             this.firstName.value = firstName
         }
     }
@@ -36,7 +33,6 @@ class AccountViewModel : ViewModel() {
 
     fun setLastNameText(lastName: String){
         if(this.lastName.value != lastName){
-            this.user.value?.lastName= lastName
             this.lastName.value = lastName
         }
     }
@@ -47,7 +43,6 @@ class AccountViewModel : ViewModel() {
 
     fun setBirthDateText(birthDate: String){
         if(this.birthDate.value != birthDate){
-            this.user.value?.birthDate = birthDate
             this.birthDate.value = birthDate
         }
     }
@@ -58,7 +53,6 @@ class AccountViewModel : ViewModel() {
 
     fun setCityText(city: String){
         if(this.city.value != city){
-            this.user.value?.address?.city = city
             this.city.value = city
         }
     }
@@ -69,7 +63,6 @@ class AccountViewModel : ViewModel() {
 
     fun setPostalCodeText(postalCode: Integer){
         if(this.postalCode.value != postalCode){
-            this.user.value?.address?.postalCode = postalCode.toInt()
             this.postalCode.value = postalCode
         }
     }
@@ -80,7 +73,6 @@ class AccountViewModel : ViewModel() {
 
     fun setStreetText(street: String){
         if(this.street.value != street){
-            this.user.value?.address?.street = street
             this.street.value = street
         }
     }
@@ -91,7 +83,6 @@ class AccountViewModel : ViewModel() {
 
     fun setStreetCodeText(streetCode: String){
         if(this.streetCode.value != streetCode){
-            this.user.value?.address?.streetCode = streetCode
             this.streetCode.value = streetCode
         }
     }
@@ -102,7 +93,6 @@ class AccountViewModel : ViewModel() {
 
     fun setCountryText(country: String){
         if(this.country.value != country){
-            this.user.value?.address?.country = country
             this.country.value = country
         }
     }
@@ -117,6 +107,22 @@ class AccountViewModel : ViewModel() {
         this.street.value = user.address.street
         this.streetCode.value = user.address.streetCode
         this.country.value = user.address.country
+    }
+
+    fun onClick(){
+        this.user.value = User(
+                this.firstName.value.toString(),
+                this.lastName.value.toString(),
+                Address(
+                    this.city.value.toString(),
+                    this.postalCode.value!!.toInt(),
+                    this.street.value.toString(),
+                    this.streetCode.value.toString(),
+                    this.country.value.toString()
+                ),
+                this.birthDate.value.toString()
+        )
+
     }
 
 }

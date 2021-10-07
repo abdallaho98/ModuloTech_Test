@@ -179,6 +179,7 @@
                 android:id="@+id/country_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:errorEnabled="true"
                 style="@style/EditTextArea"
                 android:hint="Country">
 
@@ -197,6 +198,7 @@
                 android:layout_marginBottom="16dp"
                 android:id="@+id/save_button"
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                android:onClick="@{() -> viewmodel.onClick()}"
                 android:layout_width="0dp"
                 android:layout_height="62dp"
                 app:layout_constraintWidth_percent=".4"

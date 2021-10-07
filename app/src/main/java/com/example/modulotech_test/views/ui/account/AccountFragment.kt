@@ -40,8 +40,8 @@ class AccountFragment : Fragment() {
             )
         root.viewmodel = accountViewModel
         root.lifecycleOwner = viewLifecycleOwner
-        accountViewModel.street.observe(viewLifecycleOwner, Observer<String>{
-            Log.e("User CHanges", accountViewModel.user.value?.address?.street.toString());
+        accountViewModel.user.observe(viewLifecycleOwner, Observer<User>{
+            prefsHelp?.setUser(it)
         })
         return root.root
     }
