@@ -36,25 +36,15 @@ class RollerShutterActivity : AppCompatActivity() {
         binding.viewmodel = rollerShutterViewModel
         binding.lifecycleOwner = this
         // Observables
-        findViewById<Slider>(R.id.position).addOnChangeListener { _, value, _ ->
-            run {
-                // rollerShutterViewModel.setPosition(value.toInt());
-            }
-        }
-        rollerShutterViewModel.rollerShutter.observe(this , Observer<RollerShutter> {
-            /*
-            device = it as RollerShutter
-            // Log.e("Here details", it.position.toString())
+        rollerShutterViewModel.position.observe(this, Observer<Int> {
+            device.position = it
             prefsHelp.setDevices(
-                prefsHelp.getDevices().map { it2 ->
-                    if(it2.id == it.id) return@map device
-                    return@map it2
-                } as ArrayList<Device>
+                    prefsHelp.getDevices().map { item ->
+                        if (item.id == device.id)
+                            return@map device
+                        return@map item
+                    } as ArrayList<Device>
             )
-             */
-        })
-        rollerShutterViewModel.position.observe(this, Observer<Integer> {
-            Log.e("Here details 2", it.toString())
         })
     }
 

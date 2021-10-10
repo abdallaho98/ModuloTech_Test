@@ -9,7 +9,8 @@ class Light(
         var intensity: Int,
         var mode: Boolean
 ) : Device(id, deviceName), Serializable{
-        val productType = ProductType.Light
+
+        private val productType = ProductType.Light
         companion object {
                 fun fromJSON(string: String): Light {
                         val json = JSONObject(string)
@@ -18,7 +19,12 @@ class Light(
                                 json.getString("deviceName"),
                                 json.getInt("intensity"),
                                 json.getString("mode") == "ON"
+                                        || json.getString("mode") == "true"
                         )
                 }
+        }
+
+        override fun toString(): String {
+                return "Light(intensity=$intensity, mode=$mode, productType=$productType)"
         }
 }

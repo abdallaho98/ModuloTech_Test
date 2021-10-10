@@ -11,7 +11,9 @@ class RollerShutter(
         deviceName: String,
         var position: Int
 ) : Device(id, deviceName) , Serializable{
-        val productType = ProductType.RollerShutter
+
+
+        private val productType = ProductType.RollerShutter
         companion object {
                 fun fromJSON(string: String): RollerShutter {
                         val json = JSONObject(string)
@@ -21,5 +23,9 @@ class RollerShutter(
                                 json.getInt("position")
                         )
                 }
+        }
+
+        override fun toString(): String {
+                return "RollerShutter(position=$position, productType=$productType)"
         }
 }

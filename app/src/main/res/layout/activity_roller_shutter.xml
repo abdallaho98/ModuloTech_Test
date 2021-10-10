@@ -19,13 +19,21 @@
             android:layout_height="60dp"
             android:id="@+id/position"
             android:stepSize="1"
-            android:value="@{viewmodel.positionL}"
+            app:position="@={viewmodel.position}"
             android:valueFrom="0"
             android:rotation="270"
             android:valueTo="100"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             />
+        <TextView
+            app:layout_constraintHeight_percent=".2"
+            android:gravity="center_horizontal|bottom"
+            style="@style/TitleText"
+            android:text="@{String.valueOf(viewmodel.position)}"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

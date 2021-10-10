@@ -9,7 +9,8 @@ class Heater(
         var temperature: Int,
         var mode: Boolean
 ) : Device(id, deviceName), Serializable{
-        val productType = ProductType.Heater
+
+        private val productType = ProductType.Heater
         companion object {
                 fun fromJSON(string: String): Heater {
                         val json = JSONObject(string)
@@ -18,7 +19,12 @@ class Heater(
                                 json.getString("deviceName"),
                                 json.getInt("temperature"),
                                 json.getString("mode") == "ON"
+                                        || json.getString("mode") == "true"
                         )
                 }
+        }
+
+        override fun toString(): String {
+                return "Heater(temperature=$temperature, mode=$mode, productType=$productType)"
         }
 }

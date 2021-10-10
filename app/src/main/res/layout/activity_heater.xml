@@ -25,7 +25,7 @@
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:checked="@{viewmodel.heater.mode}"
+                android:checked="@={viewmodel.mode}"
                 android:text="Mode"
                 app:showText="true"
                 app:switchPadding="16dp"
@@ -36,14 +36,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/temperature"
-                android:valueFrom="7"
-                android:value="@{viewmodel.heater.temperature}"
-                android:valueTo="28"
-                android:stepSize="0.5"
+                android:id="@+id/intensity"
+                app:position="@={viewmodel.temperature}"
+                android:valueFrom="0"
+                android:stepSize="1"
+                android:valueTo="100"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 />
+            <TextView
+                android:gravity="center_horizontal"
+                style="@style/TitleText"
+                android:text="@{String.valueOf(viewmodel.temperature)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
