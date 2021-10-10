@@ -38,9 +38,9 @@
                 android:layout_height="60dp"
                 android:id="@+id/intensity"
                 app:position="@={viewmodel.temperature}"
-                android:valueFrom="0"
+                android:valueFrom="7"
                 android:stepSize="1"
-                android:valueTo="100"
+                android:valueTo="28"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 />
