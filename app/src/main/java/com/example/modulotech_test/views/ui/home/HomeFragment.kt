@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.modulotech_test.R
 import com.example.modulotech_test.adapters.DevicesRecyclerAdapter
 import com.example.modulotech_test.helpers.AppPreferencesHelper
+import com.google.android.material.chip.Chip
 
 class HomeFragment : Fragment() {
 
@@ -32,19 +33,32 @@ class HomeFragment : Fragment() {
         var viewManager = LinearLayoutManager(activity)
         var mainrecycler = root.findViewById(R.id.devices_list) as RecyclerView
         mainrecycler.layoutManager = viewManager
-        val prefsHelp =
-            context?.applicationContext?.let {
-                    it1 -> AppPreferencesHelper(it1, "data")
-            }
+        val prefsHelp = context?.let { AppPreferencesHelper(it, "data") }
         if (prefsHelp != null) {
-            homeViewModel.load(prefsHelp.getDevices())
+            homeViewModel.init(prefsHelp.getDevices())
         }
         activity?.let {
-            homeViewModel.lst.observe(it, Observer { it11 ->
-                Log.i("data", it11.toString())
+            homeViewModel.lst.observe(it, Observer { listItems ->
+                prefsHelp?.setDevices(listItems)
                 mainrecycler.adapter =
-                    context?.let { it1 -> DevicesRecyclerAdapter(homeViewModel, it11, it1) }
+                    context?.let { it1 -> DevicesRecyclerAdapter(homeViewModel, listItems, it1) }
             })
+            homeViewModel.listOfAllDevices.observe(it, Observer { listItems ->
+                prefsHelp?.setDevices(listItems)
+            })
+        }
+        // Chip Filter Changes
+        // Light
+        root.findViewById<Chip>(R.id.light_chip).setOnCheckedChangeListener { _, isChecked ->
+            homeViewModel.applyFilterLight(isChecked)
+        }
+        // Heater
+        root.findViewById<Chip>(R.id.heater_chip).setOnCheckedChangeListener { _, isChecked ->
+            homeViewModel.applyFilterHeater(isChecked)
+        }
+        // RollerShutter
+        root.findViewById<Chip>(R.id.rollershutter_chip).setOnCheckedChangeListener { _, isChecked ->
+            homeViewModel.applyFilterRollerShutter(isChecked)
         }
         return root
     }

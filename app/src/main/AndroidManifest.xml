@@ -12,10 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModuloTech_Test">
-        <activity
-            android:name=".views.MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.ModuloTech_Test.NoActionBar"></activity>
         <activity android:name=".views.rollershutter.RollerShutterActivity" />
         <activity android:name=".views.light.LightActivity" />
         <activity android:name=".views.heater.HeaterActivity" />
