@@ -17,4 +17,9 @@
     <string name="light">Light</string>
     <string name="heater">Heater</string>
     <string name="rollershutter">RollerShutter</string>
+    <!-- Error Messages Form -->
+    <string name="emptyField">Cant be Empty</string>
+    <string name="dateError">Date should be like dd/MM/yyyy</string>
+    <string name="postalCodeError">Postal code name invalid</string>
+    <string name="countryError">Country name invalid</string>
 </resources>

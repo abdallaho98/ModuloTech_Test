@@ -17,4 +17,9 @@
     <string name="light">Lampe</string>
     <string name="heater">Radiateur</string>
     <string name="rollershutter">Volet roulant</string>
+    <!-- Error Messages Form -->
+    <string name="emptyField">ne peut pas être vide</string>
+    <string name="dateError">doit être au format jj/MM/aaaa</string>
+    <string name="postalCodeError">code postal invalide</string>
+    <string name="countryError">pays invalide</string>
 </resources>

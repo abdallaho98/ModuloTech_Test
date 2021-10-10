@@ -34,6 +34,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/first_name_area"
                 android:layout_width="match_parent"
+                app:errorEnabled="@{!viewmodel.isFirstNameValid}"
+                app:errorTextColor="@color/red"
                 android:layout_height="wrap_content"
                 style="@style/EditTextArea"
                 android:hint="@string/first_name">
@@ -52,6 +54,7 @@
                 app:layout_constraintTop_toBottomOf="@id/first_name_area"
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/last_name_area"
+                app:errorEnabled="@{!viewmodel.isLastNameValid}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/EditTextArea"
@@ -70,6 +73,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 app:layout_constraintTop_toBottomOf="@id/last_name_area"
                 app:layout_constraintStart_toStartOf="parent"
+                app:errorEnabled="@{!viewmodel.isBirthDateValid}"
                 android:id="@+id/birth_date_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,6 +104,7 @@
                 app:layout_constraintTop_toBottomOf="@id/address_title"
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/city_area"
+                app:errorEnabled="@{!viewmodel.isCityValid}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/EditTextArea"
@@ -119,6 +124,7 @@
                 app:layout_constraintTop_toBottomOf="@id/city_area"
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/postal_code_area"
+                app:errorEnabled="@{!viewmodel.isPostalCodeValid}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/EditTextArea"
@@ -138,6 +144,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 app:layout_constraintTop_toBottomOf="@id/postal_code_area"
                 app:layout_constraintStart_toStartOf="parent"
+                app:errorEnabled="@{!viewmodel.isStreetValid}"
                 android:id="@+id/street_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,6 +164,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 app:layout_constraintTop_toBottomOf="@id/street_area"
                 app:layout_constraintStart_toStartOf="parent"
+                app:errorEnabled="@{!viewmodel.isStreetCodeValid}"
                 android:id="@+id/street_code_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,10 +184,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 app:layout_constraintTop_toBottomOf="@id/street_code_area"
                 app:layout_constraintStart_toStartOf="parent"
+                app:errorEnabled="@{!viewmodel.isCountryValid}"
                 android:id="@+id/country_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
                 style="@style/EditTextArea"
                 android:hint="Country">
 
@@ -199,6 +207,7 @@
                 android:id="@+id/save_button"
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
                 android:onClick="@{() -> viewmodel.onClick()}"
+                android:enabled="@{viewmodel.isFormValid}"
                 android:layout_width="0dp"
                 android:layout_height="62dp"
                 app:layout_constraintWidth_percent=".4"
