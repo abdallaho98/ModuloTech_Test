@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.example.modulotech_test.R
 import com.example.modulotech_test.api.APIService
@@ -70,8 +71,9 @@ class SplashActivity : Activity() {
                     Log.e("RETROFIT", t?.message.toString())
                 }
             })
-        } else {
-            startActivity(Intent(this,MainActivity::class.java))
         }
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+        }, 3000)
     }
 }
