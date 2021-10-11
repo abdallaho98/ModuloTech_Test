@@ -13,6 +13,7 @@
         android:title="@string/title_home" />
 
     <item
+        android:contentDescription="account"
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account_circle_24dp"
         android:title="@string/title_account" />
